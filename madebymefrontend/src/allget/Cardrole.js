@@ -1,0 +1,105 @@
+import React, { useEffect, useState } from 'react'
+import './cardrole.css'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
+import Button from '@mui/material/Button';
+
+export default function Cardrole() {
+
+const [image , setImage] = useState('')
+const [name1 , setName1] = useState('')
+
+const {id} = useParams()  // id form url
+const navigate = useNavigate()
+    const [name, setName] = useState('')
+    const [discription , setDiscription] = useState('')
+
+    const [data , setData] = useState([])
+    useEffect(()=>{
+        if(id){
+            setdataviewrole(id)
+            console.log("Card rolr id :",id)
+        }
+    },[id])
+
+
+    useEffect(() => {
+      axios.get(`http://localhost:8000/api/role/${id}`)
+      .then((resp) => {
+            console.log(resp.data.image[0].filename)
+              const data = resp.data;
+              // if (resp?.data?.data?.image[0]?.path) {
+              //   setImage(resp.data.data.image[0].path);
+              
+              //     console.log(data.image[0].path , 'kuch bta yaar')
+              // }
+              if(resp?.data?.image[0]?.path)
+              {
+                setImage(resp.data.image[0].path)
+                console.log(resp.data.image[0].path , 'checking data')
+              } 
+  
+              setName1(resp.data.name1 || 'No name available');
+          }).catch((err) => {
+              console.log("err,", err);
+          });
+  }, [id]);
+
+
+  
+  function setdataviewrole(id){
+    axios.get('http://localhost:8000/api/role/' +id).then((resp)=>{
+      console.log(resp.data)
+            setName(resp.data.name)
+            setDiscription(resp.data.discription)
+          }).catch((err)=>{
+            console.log(err)
+          })
+        }
+        
+        
+          function okviewrolebtn(){
+            navigate('/role')
+          }
+  return (
+    <>
+    <div>
+        <div class="row">
+  <div class="example-1 card">
+    <div class="wrapper">
+      <div class="date">
+       
+      </div>
+      <div class="data">
+        <div class="content">
+
+          {/* all data */}
+          <h1 style={{fontFamily : 'cursive'}}>User View</h1>
+          <p className='addrole-head'>Name :- {<span>{name}</span>}</p>
+            
+            <br></br>
+            <p className='addrole-head'>Discription :- {<span>{discription}</span>}</p>
+            <br></br>
+            <Button onClick={(e)=>okviewrolebtn(e)} className='text-primary' variant="outlined" href="#outlined-buttons">Ok </Button>
+            </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="example-2 card">
+    <div class="wrapper">
+      <div class="header">
+        <div class="date">
+         {/* // image aay ge */}
+        <img  src={`http://localhost:8000/api/role/${setImage }`} alt='no image available'></img> 
+        </div>
+       
+      </div> 
+      
+    </div>
+  </div>
+</div>
+    </div>
+    </>
+  )
+}

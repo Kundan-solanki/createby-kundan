@@ -1,0 +1,134 @@
+import axios from 'axios' // import axios
+import React, { useEffect, useState } from 'react'  // import useEffect and usestate
+import { useNavigate, useParams } from 'react-router-dom'  //import usNavigate and useParams
+import { toast } from 'react-toastify';  // aleart unique
+
+export default function Addmarksheet() {
+    const [firstName , setFirstName] = useState('')
+    const [lastName , setlastName] = useState('')
+    const [rollNo , setRollNo] = useState('')
+    const [maths , setMaths] = useState('')
+    const [chemistry , setChemistry] = useState('')
+    const [image , setImage] = useState('')
+   const [Isempty , setIsEpty] = useState('')
+ 
+    const navigate = useNavigate()
+  let id = useParams()?.id
+  console.log(id , "THis is a id")
+
+
+  useEffect(()=>{
+    if(id){
+      // editdata(id)
+      editemarksheetone(id)
+      document.querySelector('#title').innerText="Edit Marksheet"
+    }
+  })
+
+    function handalsubmit(e){
+      e.preventDefault()
+      setIsEpty(true)
+      if(id){
+        editdata(id)
+        navigate('/marksheet')
+
+      } else{
+        postfunctinone()
+        toast.success("Successfull create Data")
+        setTimeout(()=>{
+          navigate('/marksheet')
+
+        }, 3000)
+      }
+    }
+
+    function postfunctinone(){
+      const formData = new FormData()
+      formData.append('firstName', firstName)
+      formData.append('lastName', lastName)
+      formData.append('rollNo', rollNo)
+      formData.append('maths', maths)
+      formData.append('chemistry', chemistry)
+      formData.append('image', image[0])
+      console.log(formData)
+      
+      axios.post("http://localhost:8000/api/marksheet", formData).then((req , resp)=>{
+        console.log(resp.image)
+        
+      }).catch((err)=>{
+        console.log(err)
+      })
+      
+    }
+    
+ 
+    function editdata(){
+      axios.put("http://localhost:8000/api/marksheet/" +id ,{firstName: firstName , lastName: lastName, rollNo: rollNo, maths : maths , chemistry:chemistry}).then((resp)=>{
+        console.log(resp.data)
+      }).catch((err)=>{
+        console.log('edite marksheet data', err)
+      })
+    }
+
+    function editemarksheetone(){
+      axios.get('http://localhost:8000/api/marksheet/' + id).then((resp)=>{
+        console.log(resp.data)
+        setFirstName(resp.data.firstName)
+        setlastName(resp.data.lastName)
+        setRollNo(resp.data.rollNo)
+        setMaths(resp.data.maths)
+        setChemistry(resp.data.chemistry)
+      }).catch((err)=>{
+        console.log(err)
+      })
+    }
+    
+   
+  return (
+    <>
+    
+    <div id="container">
+
+<div id="container1">
+        <h1 id="title">User Marksheet</h1>
+     {(Isempty && !true) && <p style={{color : "red", fontSize : '5%'}}>No Fill Data</p>}
+
+        <form id="survey-form">
+          <label id="name-label">FirstName</label>
+        {(Isempty && !firstName) &&  <p style={{color : 'red'}}>Fill input field</p>}
+          
+          <input id="name" type="text" value={firstName} placeholder="Enter your firstname" onChange={(event) => setFirstName(event.target.value)} />
+
+          <label id="email-label" >LastName</label>
+        {(Isempty && !lastName) &&  <p style={{color : 'red'}}>Fill input field</p>}
+
+          <input id="email" type="text"  value={lastName} placeholder="Enter your lastName" onChange={(event) => setlastName(event.target.value)} />
+
+          <label id="number-label">RollNO</label>
+        {(Isempty && !rollNo) &&  <p style={{color : 'red'}}>Fill input field</p>}
+
+          <input id="number" type="number"  value={rollNo} placeholder="role Id" onChange={(event) => setRollNo(event.target.value)} />
+
+          <label id="number-label">Maths</label>
+        {(Isempty && !maths) &&  <p style={{color : 'red'}}>Fill input field</p>}
+
+          <input id="number" type="number" value={maths} placeholder="number" onChange={(event) => setMaths(event.target.value)} />
+
+
+          <label id="number-label">chemistry</label>
+        {(Isempty && !chemistry) &&  <p style={{color : 'red'}}>Fill input field</p>}
+
+          <input id="number" type="number" placeholder="number" value={chemistry} onChange={(event) => setChemistry(event.target.value)} />
+
+          <button id='submit' onClick={(e) => handalsubmit(e)} >Submit</button>
+          <button id='submit' onClick={() => editdata()}>Edit</button>
+
+
+
+        </form>
+      </div>
+    </div>
+    </>
+  )
+}
+ 

@@ -1,0 +1,118 @@
+/* body{
+    background-image: linear-gradient(90deg,rgba(255, 132, 0, 0.809) 0, #ee4845 50%,#db89ee 90%);
+    backdrop-filter: blur(20px);
+  }
+  header{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(auto-fill(10px));
+  }
+   #title{
+     text-transform: capitalize;
+     font-size: 3rem;
+     font-family: garamond, serif;
+     font-style: italic;
+     text-align: center;
+   }
+  
+   #description{
+     font-size: 2rem;
+     font-family: garamond, serif;
+     text-align: center;
+     text-transform: none;
+     padding: 1rem;
+   }
+   #survey-form{
+     box-sizing: border-box;
+     border-radius: 0.9rem;
+     background-color: rgba(255, 255, 255, 0.3);
+     backdrop-filter: blur(10px);
+     margin-left: 20%;
+     margin-right: 20%; 
+     padding: 2rem 3rem 2rem 1rem;   
+   }
+  ::placeholder, #dropdown{
+    font-family: 'PT Sans', sans-serif; 
+    text-align: center;
+    text-align-last: center;
+  
+  }
+   .question{
+    max-width: 100%;
+     margin: 1rem 3rem 0 2rem;
+     text-align: center;
+     font-size: 1rem;
+     font-family: 'PT Sans', sans-serif;
+     padding: 0.4rem ;
+   }
+  
+   input{
+     margin: 1rem;
+     border-color: transparent;
+     border-radius: 0.9rem;  
+     min-width: 95%;
+     height: 32px;
+   }
+  
+   #dropdown{
+     border-color: transparent;
+     border-radius: 0.9rem;
+     text-align: center;
+     min-width: 95%;
+    
+   }
+  
+   p{
+     margin: 0;
+   }
+  
+   label, p{
+    font-weight: 600;
+    font-style: italic;
+    font-family: garamond, serif;
+    font-size: 1.5rem;
+  }
+  
+   .input-radio{
+    min-width: 1.4rem;
+  }
+  .input-textarea {
+    min-height: 10rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    resize: vertical;
+    border-color: transparent;
+    border-radius: 0.9rem;  
+  }
+  #textarea{
+    min-width: auto;
+    padding-bottom: 1rem;
+  }
+  
+  
+  #submit{
+    width: 100%;
+    border-radius: 0.9rem;
+    border-color: transparent;
+    font-family: 'PT Sans', sans-serif;
+    padding: 0.8rem;
+    background: rgba(35, 240, 243, 0.646);
+    cursor: pointer;
+    text-overflow: ellipsis;
+  }
+  
+     @media(max-width: 430px){
+      body {
+        max-width: 350px;
+      }
+      
+      .question {
+        margin: 0 1rem 0 1rem;
+      }
+      input{
+        max-width: 100%;
+      }
+      #submit {
+        
+      }
+    } */
