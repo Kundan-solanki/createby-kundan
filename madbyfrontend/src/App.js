@@ -20,27 +20,14 @@ import Cardstudent from "./allget/Cardstudent";
 function App() {
   const navigate = useNavigate()
 
-    let auth = localStorage.getItem('token')
-    // console.log('Auth in aoo', auth)
-    
+    let auth = localStorage.getItem('token')    
     useEffect(()=>{
       if(!auth || null){
         console.log("auth is empty  , redirecting" , auth)
         navigate('/login')
       };
 
-    } , [])
- 
-
-//  useEffect(()=>{
-//    if (auth === null) {
-//      navigate('/login');
-//    }
-//  },[]);
-
- 
-  
-//   matksheet add karna ha acche se bna ke simple use me data add karna ha
+    },[])
 
   return ( 
    <>
