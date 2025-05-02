@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './allget/Navbar';
+import Dashboard from './allget/Dashboard';
 import Role from './allget/Role';
 import Addrole from './allget/Addrole';
 import Home from './allget/Home';
@@ -33,7 +33,7 @@ function App() {
   return (
     <>
 
-      <Navbar />
+      <Dashboard />
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/role' element={<Role />}></Route>

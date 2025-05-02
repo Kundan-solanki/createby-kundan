@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './loginform.css'
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button'; // material ui component
 import { FaArrowRight } from "react-icons/fa";  // react-icon
