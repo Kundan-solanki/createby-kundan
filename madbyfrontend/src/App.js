@@ -50,6 +50,7 @@ function App() {
         <Route path="/cardrole/:id" element={<Cardrole />}></Route>
         <Route path="/cardmarksheet/:id" element={<Cardmarksheet />}></Route>
         <Route path="/cardstudent/:id" element={<Cardstudent />}></Route>
+        <Route path="*" element={<h1>PAHE NOT FOUND 404 Page not found ERROR</h1>}></Route>
 
       </Routes>
 
