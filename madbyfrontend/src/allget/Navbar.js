@@ -78,7 +78,7 @@ export default function Navbar() {
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li className="nav-item">
-                      <Link id='logoutin' className="nav-link active fs-5 text-success" aria-current="page" to="login" onClick={() => logoutuserperson()}>Logout ({JSON.parse(auth)?.name})</Link>
+                      <Link id='logoutin' className="nav-link active fs-5 text-success" aria-current="page" to="/login" onClick={() => logoutuserperson()}>Logout ({JSON.parse(auth)?.name})</Link>
                     </li>
                   </ul>
                 </ul>

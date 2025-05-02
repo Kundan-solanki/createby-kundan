@@ -14,7 +14,6 @@ const navigate = useNavigate()
     const [name, setName] = useState('')
     const [discription , setDiscription] = useState('')
 
-    const [data , setData] = useState([])
     useEffect(()=>{
         if(id){
             setdataviewrole(id)
@@ -22,28 +21,28 @@ const navigate = useNavigate()
         }
     },[id])
 
-
-    useEffect(() => {
-      axios.get(`http://localhost:8000/api/role/${id}`)
-      .then((resp) => {
-            console.log(resp.data.image[0].filename)
-              const data = resp.data;
-              // if (resp?.data?.data?.image[0]?.path) {
-              //   setImage(resp.data.data.image[0].path);
+// show image but not show again again
+  //   useEffect(() => {
+  //     axios.get(`http://localhost:8000/api/role/${id}`)
+  //     .then((resp) => {
+  //           console.log(resp.data.image[0].filename)
+  //             const data = resp.data;
+  //             // if (resp?.data?.data?.image[0]?.path) {
+  //             //   setImage(resp.data.data.image[0].path);
               
-              //     console.log(data.image[0].path , 'kuch bta yaar')
-              // }
-              if(resp?.data?.image[0]?.path)
-              {
-                setImage(resp.data.image[0].path)
-                console.log(resp.data.image[0].path , 'checking data')
-              } 
+  //             //     console.log(data.image[0].path , 'kuch bta yaar')
+  //             // }
+  //             if(resp?.data?.image[0]?.path)
+  //             {
+  //               setImage(resp.data.image[0].path)
+  //               console.log(resp.data.image[0].path , 'checking data')
+  //             } 
   
-              setName1(resp.data.name1 || 'No name available');
-          }).catch((err) => {
-              console.log("err,", err);
-          });
-  }, [id]);
+  //             setName1(resp.data.name1 || 'No name available');
+  //         }).catch((err) => {
+  //             console.log("err,", err);
+  //         });
+  // }, [id]);
 
 
   

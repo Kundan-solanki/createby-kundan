@@ -37,7 +37,7 @@ export default function Marksheet() {
 
 
     function marksheetdeletedata(id) {
-        axios.delete('http://localhost:8000/api/marksheet/' + id).then((resp) => {
+        axios.delete(url +'/' + id).then((resp) => {
             setData((prevData)=> prevData.filter(item => item._id !== id))
             console.log(resp)
               toast.error("Data is Deleted")
@@ -82,7 +82,7 @@ export default function Marksheet() {
                         <tbody className='role-tr'>
                             {
                                 filteredData.map((item, i) => {
-                                    console.log(item._id)
+                                    console.log( "thisi s a marksheet data",item._id)
 
                                     return (
                                         <tr className='role-tr' key={item._id}>
@@ -93,7 +93,7 @@ export default function Marksheet() {
                                             <td className='role-th'>{item.maths}</td>
                                             <td className='role-th'>{item.chemistry}</td>
                                             <td className='role-th'>
-                                                <Button><Link className='role-th' to={`/Addmarksheet/${item._id}`}><FaPencilAlt style={{ fontSize: '30px' }} color='error' /></Link></Button>
+                                                <Button><Link className='role-th' to={`/addmarksheet/${item._id}`}><FaPencilAlt style={{ fontSize: '30px' }} color='error' /></Link></Button>
                                             </td>
 
                                             <td className='role-th'>
@@ -108,11 +108,6 @@ export default function Marksheet() {
                                                 <Link><Button className='text-danger' onClick={() => marksheetdeletedata(item._id)}><MdDelete style={{ fontSize: '30px' }} color='error' /></Button></Link>
                                             </td>
                                         </tr>
-                                        //                                           /* <Button className='secondary' color='secondary'><FaEye /></Button>
-                                        //   <Button className='success' color='success'><FaPencilAlt /></Button> */}
-                                        //   {/* <Button className='error' color='error'>                      {/* <Button className='secondary' color='secondary'><FaEye /></Button>
-                                        //   <Button className='success' color='success'><FaPencilAlt /></Button> */}
-                                        //   {/* <Button className='error' color='error'><MdDelete /></Button> */}
                                     )
                                 })
                             }

@@ -7,8 +7,6 @@ import './cardstudent.css'
 
 export default function Cardstudent() {
 
-    const [image, setImage] = useState('')
-    const [name1, setName1] = useState('')
     const [firstName, setFirstName] = useState("")
     const [lastName, setlastName] = useState("")
     const [emailId, setEmailId] = useState("")
@@ -22,11 +20,11 @@ export default function Cardstudent() {
         if(id){
             setdatastudent(id)
         }
-    })
+    },[id])
 
     
     function setdatastudent(id) {
-        axios.get('http://localhost:8000/api/students/' + id).then((resp) => {
+        axios.get('http://localhost:8000/api/student/' + id).then((resp) => {
             console.log(resp.data)
             setFirstName(resp.data.firstName)
             setlastName(resp.data.lastName)
@@ -55,18 +53,21 @@ export default function Cardstudent() {
                             <div class="data">
                                 <div class="content" style={{border : "1px solid black"}}>
 
-                                    {/* all data */}
                                     <h1 style={{ fontFamily: 'cursive' }}>Student View</h1>
-                                    <label id="name-label">FirstName :- {<span>{firstName}</span>}</label><br></br>
+                                    <label id="name-label">FirstName :- <span>{firstName}</span></label>
+                                    <br></br>
 
-                                    <label id="email-label">LastName :- {<span>{lastName}</span>}</label><br></br>
+                                    <label id="email-label">LastName :- <span>{lastName}</span></label>
+                                    <br></br>
 
-                                    <label id="number-label">Emailid :- {<span>{emailId}</span>}</label><br></br>
+                                    <label id="number-label">Emailid :- <span>{emailId}</span></label>
+                                    <br></br>
 
-                                    <label id="number-label">Password :- {<span>{password}</span>}</label><br></br>
+                                    <label id="number-label">Password :- <span>{password}</span></label>
+                                    <br></br>
 
 
-                                    <label id="number-label" for="number">MobileNO :- {<span>{mobileNo}</span>}</label><br></br>
+                                    <label id="number-label" for="number">MobileNO :- <span>{mobileNo}</span></label><br></br>
 
                                     <button onClick={(e) => okviewstudentbtn(e)} className='btn btn-primary' variant="outlined" href="#outlined-buttons">OK</button>
                                 </div>

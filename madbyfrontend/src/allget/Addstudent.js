@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import './Addstudent.css'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import { toast } from 'react-toastify';  // aleart unique
 
 
@@ -12,32 +12,35 @@ function Addstudent() {
   const [emailId, setEmailId] = useState("")
   const [password, setPassword] = useState("")
   const [mobileNo, setMobileNo] = useState("")
-  const [image , setImage] = useState('')
+   const [Isempty , setIsEpty] = useState(false)
 
   const navigate = useNavigate();
   let id = useParams()?.id
-
   console.log("id : ", id)
+
   useEffect(() => {
     if (id) {
       getOne(id)
+      document.querySelector('#title').innerText="Edit Student"
+
     }
   },[])
 
-  
-
-
-  function handalsubmit(e) {
+  function handalsubmit1(e) {
     e.preventDefault()
+    setIsEpty(true)
+
+    if (!firstName || !lastName || !emailId || !password || !mobileNo) {
+      toast.error("Please fill all the fields");
+      return;
+    }
     if(id){
       editdata(id)
     } else{
       onlystudentdata()
-
       toast.success("Successfull create Data")
       setTimeout(() => {
         navigate("/student")
-        console.log("This runs after 2 seconds");
       }, 3000);
 
     }
@@ -50,30 +53,38 @@ function Addstudent() {
     formData.append('emailiId', emailId)
     formData.append('password', password)
     formData.append('mobileNo', mobileNo)
-    formData.append('image', image[0])
-    axios.post('http://localhost:8000/api/students', formData).then((req , response)=> {
+    console.log(formData)
+    axios.post('http://localhost:8000/api/student', formData).then((response)=> {
+      
       console.log(response);
       
-    }).catch(error =>{
-      console.log(error?.errorResponse?.errmsg);
+    }).catch((error) =>{
+      console.log(error);
     });
   
 
   }
-
-  function editdata() {
-    axios.put('http://localhost:8000/api/students/' + id, { firstName :firstName, lastName, emailId , password, mobileNo })
-      .then((response) => {
-        console.log(response.data);
+    
+    function editdata() {
+    axios.put('http://localhost:8000/api/student/' + id , {
+      firstName: firstName,
+      lastName: lastName,
+      emailId : emailId,
+      password : password,
+      mobileNo : mobileNo
+    }).then((response) => {
+      console.log('Update successful:', response.data);
+      if(editdata){
         navigate('/student')
-      })
-      .catch((error) => {
-        console.log('this is put err students',error); 
-      });
+      }
+    }).catch((error) => {
+      console.error('Error updating student:', error);
+    });
   }
+  
 
   function getOne() {
-    axios.get('http://localhost:8000/api/students/' + id).then((response) => {
+    axios.get('http://localhost:8000/api/student/' + id).then((response) => {
         console.log(response.data);
         setFirstName(response.data.firstName)
         setlastName(response.data.lastName)
@@ -84,13 +95,14 @@ function Addstudent() {
         console.log(error);
       });
   }
-
+  
   return (
     <>
 <div id="container">
 
       <div id="container1">
-        <h1 id="title">User Form</h1>
+        <h1 id="title">User Student</h1>
+        {(Isempty && !true) && <p style={{color : "red", fontSize : '5%'}}>No Fill Data</p>}
 
         <form id="survey-form">
           <label id="name-label">FirstName</label>
@@ -109,10 +121,10 @@ function Addstudent() {
           <label id="number-label" for="number">MobileNO</label>
           <input id="number" type="number" name="mobileNo" min="13" value={mobileNo}  placeholder="number" onChange={(event) => setMobileNo(event.target.value)} />
 
-          <button id='submit' onClick={(e) => handalsubmit(e)} >Submit</button>
-          <button id='submit' onClick={() => editdata()}>Edit</button>
-
-
+     <Link style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '20px' }}>
+          <button id='submit' onClick={(e) => handalsubmit1(e)} >Submit</button>
+     <button id='submit' to='/student' onClick={() => editdata()}>Edit</button>
+     </Link>  
 
         </form>
       </div>

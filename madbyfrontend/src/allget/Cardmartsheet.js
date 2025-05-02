@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-// matarical iu
 import Button from '@mui/material/Button';
 import { useNavigate, useParams  } from 'react-router-dom';
 import axios from 'axios';
@@ -12,10 +11,6 @@ export default function Cardmartsheet() {
     const [maths, setMaths] = useState('')
     const [chemistry, setChemistry] = useState('')
 
-    const [image , setImage] = useState('')
-    const [name1 , setName1] = useState('')
-
-    const [data , setData] = useState([])
 
     const navigate = useNavigate()
     const {id} = useParams()
@@ -31,9 +26,6 @@ useEffect(()=>{
     // setdata view
     function setdataview(id){
         axios.get('http://localhost:8000/api/marksheet/' + id).then((resp)=>{
-            // setData(resp.data)
-            console.log(resp.data)
-
             setFirstName(resp.data.firstName)
             setlastName(resp.data.lastName)
             setRollNo(resp.data.rollNo)
@@ -44,7 +36,6 @@ useEffect(()=>{
         })
     }
 
-    // navegate ok
     function okviewdatacheck(){
         navigate('/marksheet')
     }

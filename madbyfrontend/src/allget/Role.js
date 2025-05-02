@@ -15,15 +15,13 @@ import { toast } from 'react-toastify';  // aleart unique
 export default function Role() {
   const [data, setData] = useState([]);
   const [searchingItem, setSearchinItem] = useState('')
-  // const [errormsg , setErrirmsg] = useState(false)
 
 
 
-  //    ya wala .then or .catch method se kiya h
+  //    this is get method using fatch data
   useEffect(() => {
     axios.get('http://localhost:8000/api/role').then((response) => {
       setData(response.data.data);
-      // setFilteredData(response)
       console.log("data this is cosole", response.data.data)
     }).catch((err) => {
       console.log(err, 'this is error')
@@ -41,38 +39,18 @@ export default function Role() {
   })
 
 
+  // Simple DELETE request with axios
   function roledataDeleted(id) {
-    // Simple DELETE request with axios
     axios.delete('http://localhost:8000/api/role/' + id)
       .then((response) => {
         setData((prevData)=> prevData.filter(item => item._id !== id))
         toast.error("Data is Deleted")
         console.log(response)
-        //  navigate('/role')
-
 
       }).catch((err) => {
         console.log("THis is a err handaling", err)
       })
   }
-
-
-  // function searchingrole() {
-  //   axios.get('/role/:_id', async (req , resp)=>{
-  //     console.log('find one api')
-  //     let result = await findOne(req .params)
-  //       console.log(result)
-  //       resp.send(result)
-  //  }).catch((err)=>{
-  //     console.log(err)
-  //   })
-  // }
-
-
-  
- 
-
-
 
 
 
@@ -109,7 +87,6 @@ export default function Role() {
           <tbody className='role-tr'>
             {
               filteredData.map((item, i) => {
-                console.log(item, "this is all data")
                 return (
 
                   <tr className='role-tr' key={item._id}>
@@ -118,7 +95,8 @@ export default function Role() {
                     <td className='role-th'>{item.discription}</td>
                     <td className='role-th'>
 
-                 <Button><Link to={`/addrole/${item._id}`}><FaPencilAlt  style={{fontSize : '30px'}} color="secondary"/>
+                 <Button>
+                 <Link to={`/addrole/${item._id}`}><FaPencilAlt  style={{fontSize : '30px'}} color="secondary"/>
                       </Link></Button>  
                     </td>
                     <td className='role-th'>
