@@ -35,7 +35,7 @@ function App() {
 
       <Navbar />
       <Routes>
-        <Route path='/home' element={<Home />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/role' element={<Role />}></Route>
         <Route path='/addrole' element={<Addrole />}></Route>
         <Route path='/addrole/:id' element={<Addrole />}></Route>

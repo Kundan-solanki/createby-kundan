@@ -39,7 +39,7 @@ export default function Navbar() {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
                   <li className="nav-item">
-                    <Link className="nav-link active fs-5" aria-current="page" to="/home">Home</Link>
+                    <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
                   </li>
                   <div className="dropdown ">
                     <a className="btn  dropdown-toggle fs-5" to="#" data-bs-toggle="dropdown" >
