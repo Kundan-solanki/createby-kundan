@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
       <App />
-      <ToastContainer
+      {/* <ToastContainer
       position="top-right"
       autoClose={3000}
       hideProgressBar={false}
@@ -24,7 +24,7 @@ root.render(
       theme="light"
       bodyClassName="toastBody"
 
-      />
+      /> */}
   </BrowserRouter>
 
 
