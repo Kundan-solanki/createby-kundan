@@ -44,14 +44,14 @@ export default function Cardstudent() {
     return (
         <>
             <div>
-                <div class="row">
-                    <div class="example-1 card1">
-                        <div class="wrapper">
-                            <div class="date">
+                <div className="row">
+                    <div className="example-1 card1">
+                        <div className="wrapper">
+                            <div className="date">
 
                             </div>
-                            <div class="data">
-                                <div class="content" style={{border : "1px solid black"}}>
+                            <div className="data">
+                                <div className="content" style={{border : "1px solid black"}}>
 
                                     <h1 style={{ fontFamily: 'cursive' }}>Student View</h1>
                                     <label id="name-label">FirstName :- <span>{firstName}</span></label>
@@ -69,7 +69,7 @@ export default function Cardstudent() {
 
                                     <label id="number-label" for="number">MobileNO :- <span>{mobileNo}</span></label><br></br>
 
-                                    <button onClick={(e) => okviewstudentbtn(e)} className='btn btn-primary' variant="outlined" href="#outlined-buttons">OK</button>
+                                    <button onClick={(e) => okviewstudentbtn(e)} className='btn btn-primary' variant="outlined" to="#outlined-buttons">OK</button>
                                 </div>
 
                             </div>

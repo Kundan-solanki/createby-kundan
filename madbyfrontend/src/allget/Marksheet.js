@@ -51,14 +51,14 @@ export default function Marksheet() {
         <>
             <div style={{ border: "2px solid black", margin: "30px", padding: '30px' }}>
                 <div className='container'>
-                    <nav class="navbar navbar-light bg-light">
-                        <div class="container-fluid">
+                    <nav className="navbar navbar-light bg-light">
+                        <div className="container-fluid">
                             <h1 className='h1'>All Student Listing</h1>
-                            <form class="d-flex">
+                            <form className="d-flex">
                                 <span>
                                 <p>Search :  </p>
 
-                                <input class="form-control me-2 mb-0" type="text" id='myIntput' placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+                                <input className="form-control me-2 mb-0" type="text" id='myIntput' placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
                                     aria-label="Search" />
                                     </span>
 

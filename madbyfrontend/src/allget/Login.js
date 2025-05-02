@@ -73,8 +73,8 @@ export default function Login() {
               <br></br>
 
 
-              <div class="input-group mb-3">
-                <select class="form-select" id="inputGroupSelect01">
+              <div className="input-group mb-3">
+                <select className="form-select" id="inputGroupSelect01">
                   <option selected>Choose...</option>
                   <option value="1">Roles</option>
                   <option value="2">Marksheet</option>

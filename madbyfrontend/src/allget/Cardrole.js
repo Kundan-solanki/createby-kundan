@@ -63,32 +63,32 @@ const navigate = useNavigate()
   return (
     <>
     <div>
-        <div class="row">
-  <div class="example-1 card">
-    <div class="wrapper">
-      <div class="date">
+        <div className="row">
+  <div className="example-1 card">
+    <div className="wrapper">
+      <div className="date">
        
       </div>
-      <div class="data">
-        <div class="content">
+      <div className="data">
+        <div className="content">
 
           {/* all data */}
           <h1 style={{fontFamily : 'cursive'}}>User View</h1>
-          <p className='addrole-head'>Name :- {<span>{name}</span>}</p>
+          <p classNameName='addrole-head'>Name :- {<span>{name}</span>}</p>
             
             <br></br>
-            <p className='addrole-head'>Discription :- {<span>{discription}</span>}</p>
+            <p classNameName='addrole-head'>Discription :- {<span>{discription}</span>}</p>
             <br></br>
-            <Button onClick={(e)=>okviewrolebtn(e)} className='text-primary' variant="outlined" href="#outlined-buttons">Ok </Button>
+            <Button onClick={(e)=>okviewrolebtn(e)} classNameName='text-primary' variant="outlined" href="#outlined-buttons">Ok </Button>
             </div>
         
       </div>
     </div>
   </div>
-  <div class="example-2 card">
-    <div class="wrapper">
-      <div class="header">
-        <div class="date">
+  <div className="example-2 card">
+    <div className="wrapper">
+      <div className="header">
+        <div className="date">
          {/* // image aay ge */}
         <img  src={`http://localhost:8000/api/role/${setImage }`} alt='no image available'></img> 
         </div>

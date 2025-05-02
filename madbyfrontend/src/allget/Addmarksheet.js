@@ -94,32 +94,26 @@ export default function Addmarksheet() {
 
 <div id="container1">
         <h1 id="title">User Marksheet</h1>
-     {/* {(Isempty && !true) && <p style={{color : "red", fontSize : '5%'}}>No Fill Data</p>} */}
 
         <form id="survey-form">
           <label id="name-label">FirstName</label>
-      {/* //  {(Isempty && !firstName) &&  <p style={{color : 'red'}}>Fill input field</p>} \\ */}
           
           <input id="name" type="text" value={firstName} placeholder="Enter your firstname" onChange={(event) => setFirstName(event.target.value)} />
 
           <label id="email-label" >LastName</label>
-        {/* {(Isempty && !lastName) &&  <p style={{color : 'red'}}>Fill input field</p>} */}
 
           <input id="email" type="text"  value={lastName} placeholder="Enter your lastName" onChange={(event) => setlastName(event.target.value)} />
 
           <label id="number-label">RollNO</label>
-        {/* {(Isempty && !rollNo) &&  <p style={{color : 'red'}}>Fill input field</p>} */}
 
           <input id="number" type="number"  value={rollNo} placeholder="role Id" onChange={(event) => setRollNo(event.target.value)} />
 
           <label id="number-label">Maths</label>
-        {/* {(Isempty && !maths) &&  <p style={{color : 'red'}}>Fill input field</p>} */}
 
           <input id="number" type="number" value={maths} placeholder="number" onChange={(event) => setMaths(event.target.value)} />
 
 
           <label id="number-label">chemistry</label>
-        {/* {(Isempty && !chemistry) &&  <p style={{color : 'red'}}>Fill input field</p>} */}
 
           <input id="number" type="number" placeholder="number" value={chemistry} onChange={(event) => setChemistry(event.target.value)} />
 

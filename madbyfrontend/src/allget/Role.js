@@ -60,13 +60,13 @@ export default function Role() {
     <>
       <div className='container'>
 
-        <nav class="navbar navbar-light bg-light">
-          <div class="container-fluid">
+        <nav className="navbar navbar-light bg-light">
+          <div className="container-fluid">
             <h1 className='h1'>Listing Page:-</h1>
-            <form class="d-flex">
+            <form className="d-flex">
               <span>
                 <p>Search :  </p>
-                <input class="form-control me-2 mb-0" type="text" id='myIntput' placeholder="Search" value={searchingItem} onChange={(e) => setSearchinItem(e.target.value)}
+                <input className="form-control me-2 mb-0" type="text" id='myIntput' placeholder="Search" value={searchingItem} onChange={(e) => setSearchinItem(e.target.value)}
                   aria-label="Search" /> </span>
 
             </form>
