@@ -39,7 +39,7 @@ export default function Login() {
           setMsg(result.message);
         } else if (result.loginId === loginId) {
           localStorage.setItem('token', JSON.stringify(result));
-          navigate('/home');
+          navigate('/');
         }
       })
       .catch((error) => {
