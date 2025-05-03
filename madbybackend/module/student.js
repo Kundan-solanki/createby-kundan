@@ -5,7 +5,6 @@ let studentSchema = new mongoose.Schema({
     lastName : {type : String },
     emailId :  {type : String, require : true,  unique : true},
     password : {type : String, require : true},
-    mobileNo : {type : Number, require : true},
-    image : []
+    mobileNo : {type : Number, },
 })
-module.exports = mongoose.model('Students', studentSchema)
+module.exports = mongoose.model('Student', studentSchema)

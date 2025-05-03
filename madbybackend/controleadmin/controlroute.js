@@ -6,7 +6,7 @@ const route = express.Router();
 route.use(express.json())
 
 
-//  image uplodase
+//  image insert
 const upload = multer({
    storage: multer.diskStorage({
       destination: (req, file, cb) => {
@@ -20,7 +20,7 @@ const upload = multer({
 route.use('/admin/upload', express.static('upload'))
 
 
-//  insert method se hm image ko v uplode karta ha
+//  insert this method by image data
 route.post('/role', upload.single('image'), async (req, resp) => {
    console.log(resp, 'image aa rhe ha')
    try {
@@ -64,21 +64,6 @@ route.get('/role/:_id', async (req, resp) => {
 })
 
 
-
-// post method In insert Data      
-route.post("/role", async (req, resp) => {
-   console.log("first ", req.body)
-   try {
-      let result = await admin.insertOne(req.body)
-      console.log(result, 'this is a resylt code')
-      resp.send("THis is a seccsefuul")
-   } catch (err) {
-      console.log(err)
-      resp.send('sever', err)
-   }
-})
-
-
 // put method And update this data 
 route.put("/role/:_id", async (req, resp) => {
    console.log("THis is a put method", req.params)
@@ -101,13 +86,13 @@ route.delete("/role/:_id", async (req, resp) => {
       resp.status(201).send({ message: "This is a delte  ho gya", data: result })
    } catch (err) {
       console.log("first,", err)
-      resp.send('sever', err)
+      resp.send(err)
 
    }
 })
 
 
-// search bale call karna and set on page
+// search on your data match
 route.get('/role/search/:key', async (req, resp) => {
    let isensetive = new RegExp(req.params.key, 'i')
    let result = await admin.find({

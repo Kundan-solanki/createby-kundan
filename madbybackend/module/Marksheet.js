@@ -6,6 +6,5 @@ let marksheetSchema = new mongoose.Schema({
     rollNo : {type : Number , require : true, unique : true},
     maths : {type : Number , require : true},
     chemistry : {type : Number , require : true},
-    image : []
 })
 module.exports = mongoose.model('marksheet', marksheetSchema)
